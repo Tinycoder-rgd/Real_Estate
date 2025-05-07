@@ -10,9 +10,11 @@ const [cardsToShow, setCardsToShow] = useState(1);
 useEffect(()=>{
 const updateCardsToShow = ()=>{
     if (window.innerWidth>=1024) {
-        setCurrentIndex(projectsData.length);
+        setCardsToShow(3);
+        setCurrentIndex(0);
     } else {
-        setCardsToShow(1)
+        setCardsToShow(1);
+        setCurrentIndex(0);
     }
 };
     updateCardsToShow();
@@ -25,8 +27,10 @@ const updateCardsToShow = ()=>{
 const nextProject = ()=>{
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projectsData.length)
 }
-const prevProject = ()=>{
-    setCurrentIndex((prevIndex) => (prevIndex === 1) % projectsData.length -1 , prevIndex -1)
+const prevProject =()=>{
+setCurrentIndex((prevIndex) => 
+    prevIndex === 0 ? projectsData.length - 1 : prevIndex - 1
+);
 }
 
   return (
